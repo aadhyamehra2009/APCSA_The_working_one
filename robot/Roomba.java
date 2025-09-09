@@ -47,6 +47,7 @@ public class Roomba implements Directions {
 				totalSquareMoved++;
 				while (roomba.nextToABeeper()) {
 					roomba.pickBeeper();
+					totalBeepersPicked++;
 				}
 				i++;
 			}
@@ -59,6 +60,7 @@ public class Roomba implements Directions {
 			totalSquareMoved++;
 			while (roomba.nextToABeeper()) {
 					roomba.pickBeeper();
+					totalBeepersPicked++;
 			}
 			roomba.turnLeft();
 			roomba.turnLeft();
@@ -74,6 +76,7 @@ public class Roomba implements Directions {
 			roomba.turnLeft();
 			while (roomba.nextToABeeper()) {
 			roomba.pickBeeper();
+			totalBeepersPicked++;
 			}
 		}
 		j++;
@@ -84,6 +87,6 @@ public class Roomba implements Directions {
 			
 		System.out.println(totalSquareMoved);
 		// This method should return the total number of beepers cleaned up.
-		return totalBeepers;
+		return totalBeepersPicked;
 	}
 }
