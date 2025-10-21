@@ -1,5 +1,5 @@
 package piglatin;
-
+import java.util.ArrayList;
 public class PigLatinTranslator {
     public static Book translate(Book input) {
         Book translatedBook = new Book();
@@ -8,7 +8,16 @@ public class PigLatinTranslator {
         // input book.
         // Curent do-nothing code will return an empty book.
         // Your code will need to call translate(String input) many times.
+        translatedBook.setTitle(input.getTitle()+"_Transalted");
+        for(int index=0;index<input.getLineCount();index++)
+        {
+            String line=input.getLine(index);
+            String transLine=translate(line);
+            translatedBook.appendLine(transLine);
 
+
+        }
+        
         return translatedBook;
     }
 
@@ -21,6 +30,14 @@ public class PigLatinTranslator {
         // The input to this function could be any English string.
         // It may be made up of many words.
         // This method must call translateWord once for each word in the string.
+        String words[]=input.split("\\s+");
+        ArrayList<String> translatedWords=new ArrayList<String>();
+
+        for(String word:words)
+        {
+            translatedWords.add(translateWord(word));
+        }
+
         result = translateWord(input);
 
         return result;

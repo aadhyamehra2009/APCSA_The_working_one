@@ -52,6 +52,20 @@ public class Book {
 
         // TODO: use Scanner to populate the book
         // use: text.add(line) to add a line to the book.
+
+        Scanner sc=new Scanner(string);
+        while(sc.hasNextLine())
+        {
+            String line=sc.nextLine();
+            text.add(line);
+
+        }
+
+
+sc.close();
+
+
+
     }
 
     public void readFromUrl(String title, String url) {
@@ -65,6 +79,12 @@ public class Book {
             // Scanner can open a file on a URL like this:
             // Scanner(bookUrl.openStream())
             // use: text.add(line) to add a line to the book.
+            Scanner sc=new Scanner(bookUrl.openStream());
+            while(sc.hasNextLine())
+            {
+                String line=sc.nextLine();
+                text.add(line);
+            }
         } catch (IOException ex) {
             ex.printStackTrace();
         }
