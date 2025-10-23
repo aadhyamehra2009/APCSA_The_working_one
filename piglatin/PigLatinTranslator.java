@@ -42,18 +42,27 @@ public class PigLatinTranslator {
 
         return result;
     }
-
+    public boolean isVowel(String test)
+    {
+        String vowels = "aeiou";
+        if (vowels.indexOf(test) != -1)
+        {
+            return true;
+        }
+        return false;
+    }
     private static String translateWord(String input) {
         System.out.println("  -> translateWord('" + input + "')");
 
         String result = "";
-
+        
         // TODO: Replace this code to correctly translate a single word.
         // Start here first!
         // This is the first place to work.
-        result = input; // delete this line
+        
 
         return result;
+
     }
 
     // Add additonal private methods here.
