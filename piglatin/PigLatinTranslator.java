@@ -42,9 +42,9 @@ public class PigLatinTranslator {
 
         return result;
     }
-    public boolean isVowel(String test)
+    public static boolean isVowel(String test)
     {
-        String vowels = "aeiou";
+        String vowels = "aeiouyAEIOUY";
         if (vowels.indexOf(test) != -1)
         {
             return true;
@@ -53,9 +53,48 @@ public class PigLatinTranslator {
     }
     private static String translateWord(String input) {
         System.out.println("  -> translateWord('" + input + "')");
-
+        int firstVowelLocation=-1;
+        String firstPart,secondPart,thirdPart="ay";
         String result = "";
-        
+        boolean isAllSpace=true;
+        for (int i=0;i<input.length();i++)
+        {
+            if (!(input.substring(i, i+1).equals(" ")))
+            {
+                isAllSpace=false;
+                break;
+            }
+        }
+        if (isAllSpace)
+        {
+            return "";
+        }
+        boolean firstCap=false;
+        if (Character.isUpperCase(input.charAt(0)))
+        {
+            firstCap=true;
+        }
+        for (int i=0;i<input.length();i++)
+        {
+            if (isVowel(input.substring(i, i+1)))
+            {
+                firstVowelLocation=i;
+                break;
+            }
+
+        }
+
+
+        firstPart=input.substring(firstVowelLocation);
+        secondPart=input.substring(0, firstVowelLocation);
+        if (firstCap)
+        {
+            firstPart
+            //first letter of first part should be upper cased with .touppercase
+            //first letter of second part should be lower cased with .tolowercase
+        }
+        result=firstPart+secondPart+thirdPart;
+
         // TODO: Replace this code to correctly translate a single word.
         // Start here first!
         // This is the first place to work.

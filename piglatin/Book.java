@@ -85,9 +85,11 @@ sc.close();
                 String line=sc.nextLine();
                 text.add(line);
             }
+            sc.close();
         } catch (IOException ex) {
             ex.printStackTrace();
         }
+        
     }
 
     void writeToFile(String name) {
