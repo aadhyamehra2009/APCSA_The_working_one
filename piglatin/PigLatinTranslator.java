@@ -1,5 +1,5 @@
 package piglatin;
-import java.util.ArrayList;
+import java.util.Scanner;
 public class PigLatinTranslator {
     public static Book translate(Book input) {
         Book translatedBook = new Book();
@@ -26,20 +26,18 @@ public class PigLatinTranslator {
 
         String result = "";
 
-        // TODO: translate a string input, store in result.
         // The input to this function could be any English string.
         // It may be made up of many words.
         // This method must call translateWord once for each word in the string.
-        String words[]=input.split("\\s+");
-        ArrayList<String> translatedWords=new ArrayList<String>();
-
-        for(String word:words)
-        {
-            translatedWords.add(translateWord(word));
+        Scanner sc = new Scanner(input);
+        while (sc.hasNext()) {
+            result+=translateWord(sc.next());
+            if (sc.hasNext())
+            {
+                result+=" ";
+            }
         }
-
-        result = translateWord(input);
-
+        sc.close();
         return result;
     }
     public static boolean isVowel(String test)
@@ -51,12 +49,37 @@ public class PigLatinTranslator {
         }
         return false;
     }
+    public static boolean isPunct(String test)
+    {
+        String puncts = ",.?!\"[]()*`^\'";
+        if (puncts.indexOf(test) != -1)
+        {
+            return true;
+        }
+        return false;
+    }
+    public static boolean isLetter(String test)
+    {
+        String letters = "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM";
+        if (letters.indexOf(test) != -1)
+        {
+            return true;
+        }
+        return false;
+    }
     private static String translateWord(String input) {
         System.out.println("  -> translateWord('" + input + "')");
         int firstVowelLocation=-1;
         String firstPart,secondPart,thirdPart="ay";
         String result = "";
         boolean isAllSpace=true;
+        for (int i=0;i<input.length();i++)
+        {
+            if (isLetter(input.substring(i, i+1)))
+            {
+                result
+            }
+        }
         for (int i=0;i<input.length();i++)
         {
             if (!(input.substring(i, i+1).equals(" ")))
@@ -84,18 +107,28 @@ public class PigLatinTranslator {
 
         }
 
-
+        if (input.equals("United"))
+        {
+            System.out.println("");
+        }
         firstPart=input.substring(firstVowelLocation);
         secondPart=input.substring(0, firstVowelLocation);
         if (firstCap)
         {
-            firstPart
             //first letter of first part should be upper cased with .touppercase
+            firstPart=firstPart.substring(0,1).toUpperCase()+firstPart.substring(1);
             //first letter of second part should be lower cased with .tolowercase
+            secondPart=secondPart.length()==0?secondPart:secondPart.substring(0,1).toLowerCase()+secondPart.substring(1);
+
+        }
+        if (isPunct(input.substring(input.length()-1)))//if we have any punctuation in input
+        {
+            //we just assume its in the end of the string
+            thirdPart=thirdPart+firstPart.substring(firstPart.length()-1);
+            firstPart=firstPart.substring(0,firstPart.length()-1);
         }
         result=firstPart+secondPart+thirdPart;
 
-        // TODO: Replace this code to correctly translate a single word.
         // Start here first!
         // This is the first place to work.
         

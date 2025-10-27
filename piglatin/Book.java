@@ -1,5 +1,9 @@
 package piglatin;
-
+import java.nio.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.io.*;
 import java.net.*;
 import java.util.Scanner;
@@ -50,7 +54,6 @@ public class Book {
         // load a book from an input string.
         this.title = title;
 
-        // TODO: use Scanner to populate the book
         // use: text.add(line) to add a line to the book.
 
         Scanner sc=new Scanner(string);
@@ -75,7 +78,6 @@ sc.close();
 
         try {
             URL bookUrl = URI.create(url).toURL();
-            // TODO: use Scanner to populate the book
             // Scanner can open a file on a URL like this:
             // Scanner(bookUrl.openStream())
             // use: text.add(line) to add a line to the book.
@@ -94,6 +96,23 @@ sc.close();
 
     void writeToFile(String name) {
         // TODO: Add code here to write the contents of the book to a file.
+        Path filePath = Paths.get("output.txt");
+        try {
+            // Overwrites the file if it exists, creates it if not
+            for (String line:text)
+            {
+                
+                Files.writeString(filePath, "\n"+line, StandardOpenOption.APPEND);
+                
+            }
+            // To append:
+            // Files.writeString(filePath, "\nAppended text.", StandardOpenOption.APPEND);
+            
+            System.out.println("Successfully wrote to the file using Files.writeString().");
+        } catch (IOException e) {
+            System.err.println("DANG check book.java line 109" + e.getMessage());
+        }
+
         // Must write to file using provided name.
     }
 }
