@@ -96,7 +96,7 @@ sc.close();
 
     void writeToFile(String name) {
         // TODO: Add code here to write the contents of the book to a file.
-        Path filePath = Paths.get("output.txt");
+        Path filePath = Paths.get("romeo and julet.txt");
         try {
             // Overwrites the file if it exists, creates it if not
             for (String line:text)
@@ -107,7 +107,6 @@ sc.close();
             }
             // To append:
             // Files.writeString(filePath, "\nAppended text.", StandardOpenOption.APPEND);
-            
             System.out.println("Successfully wrote to the file using Files.writeString().");
         } catch (IOException e) {
             System.err.println("DANG check book.java line 109" + e.getMessage());
