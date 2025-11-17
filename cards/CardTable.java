@@ -13,6 +13,7 @@ public class CardTable {
 
     public void startPlaying()
     {
+        //aadhya 
         deck.shuffle();
 
         Scanner keyboard = new Scanner(System.in);
