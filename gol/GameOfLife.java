@@ -55,7 +55,7 @@ public class GameOfLife implements Board {
     {
         return board;
     }
-
+ //
     // Test helper to print the current state
     public void print(){
         // Print the header
