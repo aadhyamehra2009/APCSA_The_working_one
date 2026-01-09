@@ -19,7 +19,7 @@ public class Main {
         }
         return maxPrime;
     }
-
+    //finished
     public static void main(String[] args) {
         BigInteger bigInt = new BigInteger("600851475143");
         long number = bigInt.longValue();
