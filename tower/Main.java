@@ -5,6 +5,7 @@ public class Main {
     public static void main(String[] args) {
 
         // Example: Solve a tower
+        solveExample();
         // TowerModel model = new TowerModel(3);
         //TowerSolver solver = new TowerSolver();
         //solver.solve(model);
