@@ -15,4 +15,10 @@ public class Main {
         test.run();
 
     }
+
+    private static void solveExample() {
+        TowerModel model = new TowerModel(3);
+        TowerSolver solver = new TowerSolver();
+        solver.solve(model);
+    }
 }

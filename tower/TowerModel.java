@@ -49,7 +49,31 @@ public class TowerModel {
     public void move(int source, int destination)
     {
         System.out.println("Move #" + ++moveCounter + " from " + source + " to " + destination);
-        // TODO!!
+
+        if (source < 0 || source >= towers.length || destination < 0 || destination >= towers.length)
+        {
+            return;
+        }
+
+        // Remove disk from source tower
+        int disk = towers[source].pop();
+        if (disk == 0)
+        {
+            // No disk to move from source
+            return;
+        }
+
+        int destTop = towers[destination].peek();
+        if (destTop == 0 || destTop > disk)
+        {
+            // Legal move
+            towers[destination].push(disk);
+        }
+        else
+        {
+            // Illegal move: restore disk to source
+            towers[source].push(disk);
+        }
     }
 
     // Helper method to nicely print the current model state.

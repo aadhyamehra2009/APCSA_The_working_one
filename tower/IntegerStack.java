@@ -9,7 +9,7 @@ public class IntegerStack {
     public IntegerStack(int depth)
     {
         this.depth = 0;
-        stack = new int[depth];
+        stack = new int[depth]; 
     }
 
     // Get the value of the top element without removal
